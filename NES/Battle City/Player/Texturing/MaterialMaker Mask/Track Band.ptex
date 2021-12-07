@@ -1,0 +1,136 @@
+{
+	"connections": [
+		{
+			"from": "shape",
+			"from_port": 0,
+			"to": "scale",
+			"to_port": 0
+		},
+		{
+			"from": "scale",
+			"from_port": 0,
+			"to": "shear",
+			"to_port": 0
+		},
+		{
+			"from": "shear",
+			"from_port": 0,
+			"to": "translate",
+			"to_port": 0
+		},
+		{
+			"from": "translate",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@@285",
+	"node_position": {
+		"x": 0,
+		"y": 0
+	},
+	"nodes": [
+		{
+			"export_paths": {
+				"Blender": "C:/Users/cristian/Documents/GitHub/AssetsRemakes/NES/Battle City/Player/Texturing/Masks/Track Band"
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 226.599991,
+				"y": -222.199997
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1,
+					"b": 1,
+					"g": 1,
+					"r": 1,
+					"type": "Color"
+				},
+				"ao": 1,
+				"depth_scale": 0.5,
+				"emission_energy": 1,
+				"flags_transparent": true,
+				"metallic": 0,
+				"normal": 1,
+				"roughness": 1,
+				"size": 11,
+				"sss": 0
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "material"
+		},
+		{
+			"name": "shape",
+			"node_position": {
+				"x": -453,
+				"y": 58
+			},
+			"parameters": {
+				"edge": 0.12,
+				"radius": 0.25,
+				"shape": 1,
+				"sides": 4
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "shape"
+		},
+		{
+			"name": "scale",
+			"node_position": {
+				"x": -280.901703,
+				"y": 100.332932
+			},
+			"parameters": {
+				"cx": 0,
+				"cy": 0,
+				"scale_x": 1.295,
+				"scale_y": 5.74
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "scale"
+		},
+		{
+			"name": "shear",
+			"node_position": {
+				"x": -36.701714,
+				"y": 114.632919
+			},
+			"parameters": {
+				"amount": 0.56,
+				"center": 0,
+				"direction": 0
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "shear"
+		},
+		{
+			"name": "translate",
+			"node_position": {
+				"x": -69.701721,
+				"y": 299.432922
+			},
+			"parameters": {
+				"translate_x": 0.295,
+				"translate_y": 0
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "translate"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed": 0,
+	"seed_locked": false,
+	"shortdesc": "",
+	"type": "graph"
+}
