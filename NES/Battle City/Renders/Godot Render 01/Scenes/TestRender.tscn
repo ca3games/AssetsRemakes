@@ -1,0 +1,97 @@
+[gd_scene load_steps=16 format=3 uid="uid://sff55631p8n"]
+
+[ext_resource type="Texture2D" uid="uid://cy5btsf4eqn4" path="res://3D/dreifaltigkeitsberg_1k.hdr" id="1_3p0l4"]
+[ext_resource type="PackedScene" uid="uid://f0w1daaosmpg" path="res://3D/Yellow Tank Player.glb" id="1_p1lfa"]
+[ext_resource type="Texture2D" uid="uid://6bj8qaulsudq" path="res://3D/Sand 002/Sand 002_COLOR.jpg" id="2_x6alv"]
+[ext_resource type="Texture2D" uid="uid://b0di23jpashpn" path="res://3D/Sand 002/Sand 002_OCC.jpg" id="3_pwhh3"]
+[ext_resource type="Texture2D" uid="uid://b2jlbevqoh65d" path="res://3D/Sand 002/Sand 002_NRM.jpg" id="4_buo4u"]
+[ext_resource type="Texture2D" uid="uid://df64orbcdrs3g" path="res://3D/Sand 002/Sand 002_SPEC.jpg" id="5_om200"]
+[ext_resource type="Texture2D" uid="uid://binmphaqbispd" path="res://2D/dust.png" id="7_vf200"]
+[ext_resource type="Texture2D" uid="uid://cfko74oxc7uom" path="res://2D/vignette.png" id="8_s4n7b"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jo57c"]
+panorama = ExtResource( "1_3p0l4" )
+
+[sub_resource type="Sky" id="Sky_w4x8s"]
+sky_material = SubResource( "PanoramaSkyMaterial_jo57c" )
+
+[sub_resource type="Environment" id="Environment_0rybm"]
+background_mode = 2
+sky = SubResource( "Sky_w4x8s" )
+tonemap_mode = 3
+tonemap_exposure = 1.5
+tonemap_white = 3.0
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = true
+sdfgi_energy = 0.8
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.005
+volumetric_fog_detail_spread = 6.0
+adjustment_enabled = true
+adjustment_saturation = 1.2
+
+[sub_resource type="CameraEffects" id="CameraEffects_2wpxe"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 200.0
+dof_blur_far_transition = 8.0
+dof_blur_amount = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2v7lk"]
+albedo_texture = ExtResource( "2_x6alv" )
+roughness_texture = ExtResource( "5_om200" )
+normal_enabled = true
+normal_scale = 1.26
+normal_texture = ExtResource( "4_buo4u" )
+ao_enabled = true
+ao_texture = ExtResource( "3_pwhh3" )
+uv1_scale = Vector3(8, 8, 8)
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5qo2e"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kfhu4"]
+
+[node name="TestRender" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( "Environment_0rybm" )
+camera_effects = SubResource( "CameraEffects_2wpxe" )
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.26224, -0.835717, 0.482501, -5.24841e-08, 0.5, 0.866025, -0.965003, -0.227106, 0.13112, 0, 29.698, 0)
+light_energy = 1.5
+shadow_enabled = true
+directional_shadow_max_distance = 250.0
+
+[node name="Yellow Tank Player" parent="." instance=ExtResource( "1_p1lfa" )]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.735534, -0.32998, 0.591694, 0, 0.873366, 0.487065, -0.677487, -0.358253, 0.642391, 50, 39.5625, 48.8086)
+current = true
+fov = 40.0
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(500, 0, 0, 0, 1, 0, 0, 0, 500, 0, -5.82308, 5.36477)
+material_override = SubResource( "StandardMaterial3D_2v7lk" )
+mesh = SubResource( "PlaneMesh_5qo2e" )
+
+[node name="Dust" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.952941)
+material = SubResource( "CanvasItemMaterial_kfhu4" )
+position = Vector2(512, 301.75)
+scale = Vector2(1.02148, 0.858621)
+texture = ExtResource( "7_vf200" )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Vignette" type="Sprite2D" parent="."]
+modulate = Color(0.694118, 0.694118, 0.694118, 0.486275)
+position = Vector2(512.5, 300.5)
+scale = Vector2(2.07, 1.23)
+texture = ExtResource( "8_s4n7b" )
+__meta__ = {
+"_edit_lock_": true
+}
